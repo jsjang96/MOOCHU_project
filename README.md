@@ -1,15 +1,15 @@
 <img src="https://capsule-render.vercel.app/api?type=rounded&color=auto&height=200&section=header&text=Alsong-Dlsong&fontSize=90" />
 
-## 🎤 Alsong-Dlsong이란?
+## 🐱 MOOCHU 이란?
 
-**`알송달송`** 은 **이원화된 노래방 곡 데이터를 한 데 모아 검색 및 저장**하고, <br>
-**저장된 곡을 기반으로 어울리는 부를 곡 추천**을 받을 수 있는<br> 
-**`노래방 곡정보 저장 & 추천 모바일 웹 서비스`** 입니다. <br>
+**`MOOCHU`** 는 **OTT, 영화관의 영화들의 데이터들을 한 곳으로 모아서**, <br>
+**저장된 영화를 기반으로 사용자마다 좋아하는 영화, TV show를 추천**을 받을 수 있는<br> 
+**`영화 추천 시스템 웹 서비스`** 입니다. <br>
 
 <br>
 
 <details>
-<summary>🎤 Alsong-Dlsong 바로가기</summary>
+<summary>🎤 MOOCHU 바로가기</summary>
 <div markdown="1">
 
 <br>
@@ -32,20 +32,17 @@
 
 | ⚙️ 기술 스택 | 👇🏻 사용 목적 |
 |--|--|
-| **`django`** | 알송달송 웹 서비스 구현 |
+| **`django`** | MOOCHU 웹 서비스 구현 |
 | **`fastapi`** | 추천 모델 serving |
-| **`word2vec`** | 곡 추천 model 학습 |
 | **`Google Cloud Storage`** | Data Warehouse, 학습된 모델 파일 적재 |
-| **`airflow`** | 노래방 곡정보/인기차트 ETL 과정 자동화 , 모델 재학습 자동화|
-| **`celery`**, **`rabbitmq`**, **`redis`** | 트래픽 분산, 로그 적재 |
-| **`postgreDB`**, **`mongoDB`** | 데이터베이스 활용 |
+| **`Google BigQuery`** | Data Warehouse, 학습된 모델 파일 적재 |
+| **`airflow`** | CGV, Lotte, MegaBox, OTT 개봉예정작 데이터 자동화|
+| **`Kafka`** , **`redis`** | 트래픽 분산, 로그 적재 |
+| **`Mysql`**, **`mongoDB`** | 데이터베이스 활용 |
 | **`nginx`**, **`gunicorn`** | Web서버와 WAS 분리 |
 | **`GCP(Google Cloud Platform)`** | 배포를 위한 클라우드 서비스 활용 |
 | **`docker`**, **`docker compose`** | 배포를 위한 작업 환경 도커라이징 |
 | **`elastic search`**, **`logstash`**, **`kibana`** | 검색 기능 고도화, 데이터 시각화 |
-| **`OpenAI`** | ChatGPT를 활용해 추천 결과 예외 후처리 |
-| **`kakaoAPI`** | 소셜 로그인 구현 |
-| **`NiFi`** | 데이터베이스 이원화 및 동기화 |
 
 <br>
 
@@ -70,9 +67,9 @@
 
 ## 핵심 기능
 이 서비스의 핵심 기능은 **추천 서비스 기능**입니다. <br>
-사용자가 즐겨부르는 노래 리스트를 기반으로 새로운 곡을 추천해주는 서비스입니다. <br>
-또한, 다른 플랫폼과 차별화할 수 있는 기능으로는 추천 모델이 사용자들의 **로그 데이터**를 통해 <br>
-하루에 한번씩 **재학습**되어 어제와 오늘 다른 추천곡을 받아볼 수 있다는 점입니다.<br>
+사용자가 즐겨서 보는 영화 장르, 영화 리스트를 기반으로 새로운 영화를 추천해주는 서비스입니다. <br>
+또한, 영화들을 사용자들끼리 추천을 해주고 미니홈피를 만들어 소통도 할 수 있도록 했습니다. <br>
+그리고, 장르와 OTT별로 본인이 좋아하는 영화들을 필터링하여 볼 수 있습니다.<br>
 아래는 **전체 아키텍처**에 대한 첨부파일입니다.
 
 <details>
@@ -84,12 +81,12 @@
 
 ## 트러블 슈팅
 
-### 1. Airflow 경로 이슈
-- Airflow는 되도록이면 상대 경로가 아닌 절대 경로를 사용! <br>
-#### 1-1. 상대경로로 명시한 코드 (에러 발생)
+### 1. 크롤링
+- 데이터를 모으는 과정에 있어서 일정 데이터 개수가 넘어가면 403오류가 떠서 홈페이지에 안들어가짐.(ip 테더링을 해도 되지 않음)
+#### 1-1. 403에러 발생
 <img src="https://postfiles.pstatic.net/MjAyMzA3MjBfMjA4/MDAxNjg5ODM1MjE0MDgz.crL53KYPTa5xls9BndveVU73e7IjB8JcbSKIX2o2nYgg.Z5AcurZS7JTQ1IDub6gd2rbTmn_k6afrWf4u8ZUvZDkg.PNG.tbtgmltn97/image.png?type=w773"/>
 
-#### 1-2. 절대경로로 명시한 코드 (에러 해결)
+#### 1-2. 팀원들과 분산작업 (에러 해결)
 <img src="https://postfiles.pstatic.net/MjAyMzA3MjBfOCAg/MDAxNjg5ODM1MTg2MTg3.49txacmApMoHOnzY6-X0vKGSeMjLWMR8nPeO4tUCC7kg.KEuBjbfMK8mybviSZ1wFfvqFYbjFz6NJpRwHax6yFscg.PNG.tbtgmltn97/image.png?type=w773"/>
 
 <br>
@@ -105,26 +102,9 @@
 </details>
 <br>
 
-### 2. Airflow 권한 이슈
-- 호스트에 마운트 한 디렉터리의 권한을 올바르게 설정해주기!<br>
-	- docker 컨테이너에서 파일시스템 볼륨을 마운트할 때, 해당 볼륨에 대한 권한을 호스트에서 가져오게 되는데, 이 권한은 **호스트에서 마운트 한 디렉터리의 소유자와 그룹에 따라 결정**된다.<br>
- 	- 즉, 호스트에서 마운트 한 디렉터리가 docker 컨테이너에 마운트 되면, 컨테이너 내부에서 이 디렉터리에 포함된 파일에 대한 작업을 수행할 때 **호스트의 권한으로 작업하게 된다.**
-
-<br>
-
-<details>
-<summary>💣 자세한 Trouble shooting 기록</summary>
-<div markdown="1">
-
-<br>
-<a href="https://blog.naver.com/tbtgmltn97/223175583093" target="_blank" rel="noopener noreferrer">👉🏻Click👈🏻</a>
-<br>
-</div>
-</details>
-<br>
-
-### 3. mongoDB connection issue
-- pymongo를 통해 python에서 mongoDB에 접근할 때 권한 인증 제대로 명시해주기!
+### 2. mongoDB connection issue
+- pymongo를 통해 python에서 mongoDB에 접근할 때 권한 인증 제대로 명시해서 문제 해결이 됨.
+- google cloud에 mongoDB를 띄워서 연결하여 문제 해결이 됨
 
 <br>
 
