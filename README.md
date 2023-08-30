@@ -13,7 +13,7 @@
 <div markdown="1">
 
 <br>
-<a href="http://alsong-dlsong.com" target="_blank" rel="noopener noreferrer">👉🏻Click👈🏻</a>
+<a href="http://34.64.147.118:8000/moochu" target="_blank" rel="noopener noreferrer">👉🏻Click👈🏻</a>
 <br>
 </div>
 </details>
@@ -22,7 +22,7 @@
 
 ## 🧑‍🤝‍🧑 제작 기간 & 참여 인원
 
-  	-  제작 기간 : 2023.06.01 ~ 2023.08.11 (약 2개월)
+  	-  제작 기간 : 2023.06.12 ~ 2023.08.11 (약 2개월)
 	-  참여 인원 : 6명
 <br>
 
@@ -48,17 +48,9 @@
 
 ## ERD 설계
 	
-![DB ERD](https://velog.velcdn.com/images/doodjb/post/a53bf08d-8745-4c30-9b71-b349b33da6bc/image.png)
+![DB ERD](https://github.com/jsjang96/images/blob/master/MOOCHU_erd.png)
 
 <br>
-
-## 데이터 수집 파이프라인
-<div align="center">
-	<img src="https://postfiles.pstatic.net/MjAyMzA4MTdfMjMw/MDAxNjkyMjQ2MjE3NTUx.o0hyA4hhxEtAwHoAsroynVTU0mh8E9Lq9eQKwR2p6xYg.JQSgusSk2cQAA1ucnztiS6seDq3Q4tkcopbQGlKuyKAg.PNG.tbtgmltn97/image.png?type=w773"/>
- 
-</div>
-<br>
-
 ## 핵심 기능
 이 서비스의 핵심 기능은 **추천 서비스 기능**입니다. <br>
 사용자가 즐겨서 보는 영화 장르, 영화 리스트를 기반으로 새로운 영화를 추천해주는 서비스입니다. <br>
