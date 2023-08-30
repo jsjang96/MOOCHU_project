@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=rounded&color=auto&height=200&section=header&text=Alsong-Dlsong&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=auto&height=200&section=header&text=MOOCHU&fontSize=90" />
 
 ## 🐱 MOOCHU 이란?
 
